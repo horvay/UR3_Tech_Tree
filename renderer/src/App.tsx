@@ -1,21 +1,22 @@
-import React from 'react';
-import { IpcRenderer, IpcMessageEvent} from 'electron' ; 
-const electron  = window.require('electron') ;  // require electron like this in all the files. Don't Use import from 'electron' syntax for importing IpcRender from electron.
+import React from "react";
+import { IpcRenderer, IpcMessageEvent } from "electron";
+import { Application } from "./Application";
+import { BodyWidget } from './components/BodyWidget';
 
-let ipcRenderer : IpcRenderer  = electron.ipcRenderer ; 
+const electron = window.require("electron"); // require electron like this in all the files. Don't Use import from 'electron' syntax for importing IpcRender from electron.
 
-ipcRenderer.on('response' , (event:IpcMessageEvent , args:any)=>{
-  console.log(args);
-})
+let ipcRenderer: IpcRenderer = electron.ipcRenderer;
+
+ipcRenderer.on("response", (event: IpcMessageEvent, args: any) => {
+    console.log(args);
+});
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <button onClick={e=>ipcRenderer.send('channel' , {title : 'hi' , content : 'hello this is my message'})} >
-        Click me
-      </button>
-    </div>
-  );
-}
+    var app = new Application();
+    
+    return (
+        <BodyWidget app={app} />
+    );
+};
 
 export default App;
