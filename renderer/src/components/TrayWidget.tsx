@@ -7,13 +7,8 @@ const S = {
         background: rgb(20, 20, 20);
         flex-grow: 0;
         flex-shrink: 0;
-        overflow-y: scroll;
         float: left;
-    `
-}
+    `,
+};
 
-export class TrayWidget extends React.Component {
-    render() {
-        return <S.Tray>{this.props.children}</S.Tray>;
-    }
-}
+export const TrayWidget = (props: { children?: any }) => <S.Tray>{props.children}</S.Tray>;

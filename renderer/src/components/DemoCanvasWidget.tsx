@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 export interface DemoCanvasWidgetProps {
     color?: string;
     background?: string;
+    children?: any;
 }
 
 const S = {
@@ -44,12 +45,10 @@ const S = {
     `,
 };
 
-export class DemoCanvasWidget extends React.Component<DemoCanvasWidgetProps> {
-    render() {
+export const DemoCanvasWidget = (props: DemoCanvasWidgetProps) => {
         return (
-            <S.Container background={this.props.background || "rgb(60, 60, 60)"} color={this.props.color || "rgba(255,255,255, 0.05)"}>
-                {this.props.children}
+            <S.Container background={props.background || "rgb(60, 60, 60)"} color={props.color || "rgba(255,255,255, 0.05)"}>
+                {props.children}
             </S.Container>
         );
-    }
 }

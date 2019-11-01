@@ -20,22 +20,20 @@ const S = {
     `,
 };
 
-export class TrayItemWidget extends React.Component<TrayItemWidgetProps> {
-    render() {
-        return (
-            <S.Tray
-                color={this.props.color || ""}
-                draggable={true}
-                onDragStart={event => {
-                    event.dataTransfer.setData(
-                        "storm-diagram-node",
-                        JSON.stringify({ name: this.props.name, id: this.props.id, color: this.props.color }),
-                    );
-                }}
-                className="tray-item"
-            >
-                {this.props.name}
-            </S.Tray>
-        );
-    }
-}
+export const TrayItemWidget = (props: TrayItemWidgetProps) => {
+    return (
+        <S.Tray
+            color={props.color || ""}
+            draggable={true}
+            onDragStart={event => {
+                event.dataTransfer.setData(
+                    "storm-diagram-node",
+                    JSON.stringify({ name: props.name, id: props.id, color: props.color }),
+                );
+            }}
+            className="tray-item"
+        >
+            {props.name}
+        </S.Tray>
+    );
+};
