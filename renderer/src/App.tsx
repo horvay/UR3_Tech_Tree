@@ -1,7 +1,7 @@
 import React from "react";
 import { IpcRenderer, IpcMessageEvent } from "electron";
 import { Application } from "./Application";
-import { BodyWidget } from './components/BodyWidget';
+import { BodyWidget } from "./components/BodyWidget";
 
 const electron = window.require("electron"); // require electron like this in all the files. Don't Use import from 'electron' syntax for importing IpcRender from electron.
 
@@ -13,11 +13,8 @@ ipcRenderer.on("response", (event: IpcMessageEvent, args: any) => {
 
 const App: React.FC = () => {
     var app = new Application();
-    
-    return (
-        <BodyWidget app={app} />
-    );
+
+    return <BodyWidget app={app} />;
 };
 
 export default App;
-
